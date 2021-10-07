@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.gridgain.demo</groupId>
+    <artifactId>gridgain-code-deployment-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+
+    <modules>
+        <module>compute-task-executor</module>
+        <module>client-node-starter</module>
+    </modules>
+
+    <name>gridgain-code-deployment-demo</name>
+
+    <properties>
+        <gridgain.version>8.8.8</gridgain.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.gridgain</groupId>
+                <artifactId>ignite-core</artifactId>
+                <version>${gridgain.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.gridgain</groupId>
+                <artifactId>gridgain-core</artifactId>
+                <version>${gridgain.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>GridGain External Repository</id>
+            <url>https://www.gridgainsystems.com/nexus/content/repositories/external</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
