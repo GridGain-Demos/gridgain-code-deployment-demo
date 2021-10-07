@@ -10,14 +10,14 @@
     <version>1.0</version>
 
     <modules>
-        <module>compute-task-executor</module>
+        <module>compute-task-sample</module>
         <module>client-node-starter</module>
     </modules>
 
     <name>gridgain-code-deployment-demo</name>
 
     <properties>
-        <gridgain.version>8.8.8</gridgain.version>
+        <gridgain.version>8.8.9</gridgain.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -35,6 +35,12 @@
                 <artifactId>gridgain-core</artifactId>
                 <version>${gridgain.version}</version>
             </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>org.gridgain</groupId>-->
+<!--                <artifactId>control-center-agent</artifactId>-->
+<!--                <version>${gridgain.version}</version>-->
+<!--            </dependency>-->
 
         </dependencies>
     </dependencyManagement>

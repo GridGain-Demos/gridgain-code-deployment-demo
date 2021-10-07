@@ -9,9 +9,9 @@ import org.apache.ignite.lang.IgniteCallable;
 import org.apache.ignite.resources.IgniteInstanceResource;
 
 /**
- * Example of a task, returning some result from pseudo repository.
+ * Example of a callable, returning some result from pseudo repository.
  */
-public class CityFilterTask implements IgniteCallable<List<String>> {
+public class CityFilterCallable implements IgniteCallable<List<String>> {
     /** Repository. */
     private static final CityRepository repo = new CityRepository();
 
