@@ -37,7 +37,7 @@ public class ThickClientApp
 
         try (Ignite client = Ignition.start(cfg)) {
             // Executing custom Java callable on server nodes.
-            List<String> cities = client.compute().call(new CityFilterCallable());
+            List<String> cities = client.compute().execute(new CityFilterTask(), null);
 
             System.out.println(">> Cities:\n" + cities);
             System.out.println(">> Compute task is executed, check for output on the server nodes.");

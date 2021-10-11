@@ -18,12 +18,14 @@ Direct Link artifact with url `https://code-deployment-demo.s3.amazonaws.com/com
 Maven artifact with coordinate `com.google.guava:guava-collections:r03`, which is a transitive dependency of the compute task<br>
 ![Screen](./docs/img/141848.png)<br>
 9. Go to the Clusters, click "..." on the right and choose "Connect". Copy connection url to the cluster from there
-10. Go to [ThickClientApp](./client-node-starter/src/main/java/org/gridgain/demo/ThickClientApp.java) class
-11. Fill copied connection url to `CONNECTION_URLS` field.
+![Screen](./docs/img/173707.png)<br>
+10. Go to [ThinClientApp](./client-node-starter/src/main/java/org/gridgain/demo/ThinClientApp.java) class
+11. Fill copied connection url to `ADDRESSES` field.
 12. Run the application. It executes a job on cluster and you should see 
 its output on the client node:
     ```text
-    >> Cities:
+    >> Execute org.gridgain.demo.CityFilterTask job
+    >> Job result:
     [Barcelona, Bilbao, Córdoba, Gijón, Madrid, Mallorca, Murcia, Málaga, Sevilla, Valencia, Valladolid, Vigo, Zaragoza]
     >> Compute task is executed, check for output on the server nodes.
     ``` 
@@ -33,14 +35,15 @@ its output on the client node:
     >> Found 13 cities with code SPA
     ```
 13. [Optional] Go to the compute task class [CityFilterTask.java](/compute-task-executor/src/main/java/org.gridgain/demo/CityFilterTask.java)
-and invert comments on 29-30 rows:
+and invert comments on 26-27 rows:
     ```java
-    //CountryCode countryCode = CountryCode.SPA;
-    CountryCode countryCode = CountryCode.FRA;
+       CityComputeJob job = new CityComputeJob(CountryCode.SPA);
+    // CityComputeJob job = new CityComputeJob(CountryCode.FRA);
     ```
 14. [Optional] Perform point 5, 6, 7 again and you should get the following output:
     ```text
-    >> Cities:
+    >> Execute org.gridgain.demo.CityFilterTask job
+    >> Job result:
     [Angers, Bordeaux, Brest, Dijon, Grenoble, Lille, Lyon, Marseille, Montpellier, Nantes, Nice, Paris, Reims, Rennes, Strasbourg, Toulon, Toulouse]
     >> Compute task is executed, check for output on the server nodes.
     ```

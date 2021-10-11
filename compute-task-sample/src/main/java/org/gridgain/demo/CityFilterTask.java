@@ -10,7 +10,6 @@ import org.apache.ignite.IgniteException;
 import org.apache.ignite.cluster.ClusterNode;
 import org.apache.ignite.compute.ComputeJob;
 import org.apache.ignite.compute.ComputeJobAdapter;
-import org.apache.ignite.compute.ComputeJobContext;
 import org.apache.ignite.compute.ComputeJobResult;
 import org.apache.ignite.compute.ComputeTaskAdapter;
 import org.apache.ignite.internal.util.typedef.F;
@@ -25,6 +24,7 @@ public class CityFilterTask extends ComputeTaskAdapter<Object, List<String>> {
     @Override
     public Map<? extends ComputeJob, ClusterNode> map(List<ClusterNode> subgrid, Object arg) throws IgniteException {
         CityComputeJob job = new CityComputeJob(CountryCode.SPA);
+//        CityComputeJob job = new CityComputeJob(CountryCode.FRA);
 
         return subgrid.stream()
             .collect(Collectors.toMap(node -> job, identity()));
@@ -65,31 +65,7 @@ public class CityFilterTask extends ComputeTaskAdapter<Object, List<String>> {
                 Joiner.on("").join(Lists.newArrayList(">> Found ", cities.size(), " cities with code ", countryCode))
             );
 
-            return new ComputeJobResult(){
-                @Override public ComputeJobContext getJobContext() {
-                    return null;
-                }
-
-                @Override public <T> T getData() {
-                    return (T) cities;
-                }
-
-                @Override public IgniteException getException() {
-                    return null;
-                }
-
-                @Override public <T extends ComputeJob> T getJob() {
-                    return null;
-                }
-
-                @Override public ClusterNode getNode() {
-                    return null;
-                }
-
-                @Override public boolean isCancelled() {
-                    return false;
-                }
-            };
+            return cities;
         }
     }
 }
